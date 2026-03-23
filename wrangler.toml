@@ -1,0 +1,33 @@
+name = "meetingmorph"
+main = "src/index.ts"
+compatibility_date = "2026-03-01"
+
+[vars]
+ENVIRONMENT = "production"
+
+# Secrets (set via `wrangler secret put`, never hardcoded):
+# LEMON_SQUEEZY_API_KEY
+# LEMON_SQUEEZY_WEBHOOK_SECRET
+# LEMON_SQUEEZY_STORE_ID
+# LEMON_SQUEEZY_CHECKOUT_URL
+# LEMON_SQUEEZY_PRODUCT_ID
+
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "placeholder-sessions-id"
+preview_id = "placeholder-sessions-preview-id"
+
+[[kv_namespaces]]
+binding = "PRODUCTS"
+id = "placeholder-products-id"
+preview_id = "placeholder-products-preview-id"
+
+[[kv_namespaces]]
+binding = "PURCHASES"
+id = "placeholder-purchases-id"
+preview_id = "placeholder-purchases-preview-id"
+
+[[kv_namespaces]]
+binding = "RATELIMIT"
+id = "placeholder-ratelimit-id"
+preview_id = "placeholder-ratelimit-preview-id"

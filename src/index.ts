@@ -121,7 +121,7 @@ const LANDING_PAGE_HTML = `<!DOCTYPE html>
     <section class="mb-20 animate-in delay-1">
       <div class="bg-[var(--surface)] rounded-2xl p-8 glow border border-neutral-800">
         <h2 class="text-2xl font-semibold mb-4">Try it now</h2>
-        <textarea id="transcript" class="w-full h-40 bg-neutral-900 border border-neutral-700 rounded-xl p-4 text-neutral-300 mono text-sm resize-none focus:border-emerald-500 focus:outline-none transition" placeholder="Paste your meeting notes here...\n\nExample:\n- @alice will update the API docs by Friday\n- TODO: Fix the auth bug (urgent)\n- Bob needs to review the PR before EOD"></textarea>
+        <textarea id="transcript" class="w-full h-40 bg-neutral-900 border border-neutral-700 rounded-xl p-4 text-neutral-300 mono text-sm resize-none focus:border-emerald-500 focus:outline-none transition" placeholder="Paste your meeting notes here..."></textarea>
         <div class="flex gap-3 mt-4">
           <button onclick="parseMeeting()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 rounded-xl font-semibold transition">Parse Action Items</button>
           <button onclick="clearResults()" class="px-6 py-3 bg-neutral-800 hover:bg-neutral-700 rounded-xl font-medium transition">Clear</button>
@@ -136,17 +136,17 @@ const LANDING_PAGE_HTML = `<!DOCTYPE html>
 
     <section class="grid md:grid-cols-3 gap-6 mb-20 animate-in delay-2">
       <div class="bg-[var(--surface)] rounded-2xl p-6 border border-neutral-800">
-        <div class="text-3xl mb-3">\u26A1</div>
+        <div class="text-3xl mb-3">&#x26A1;</div>
         <h3 class="text-lg font-semibold mb-2">Instant Parsing</h3>
         <p class="text-neutral-400 text-sm">Paste any meeting transcript and get structured action items in seconds. Detects assignees, priorities, and deadlines automatically.</p>
       </div>
       <div class="bg-[var(--surface)] rounded-2xl p-6 border border-neutral-800">
-        <div class="text-3xl mb-3">\U0001F3AF</div>
-        <h3 class="text-lg font-semibold mb-2">Linear & Jira Ready</h3>
+        <div class="text-3xl mb-3">&#x1F3AF;</div>
+        <h3 class="text-lg font-semibold mb-2">Linear &amp; Jira Ready</h3>
         <p class="text-neutral-400 text-sm">Export action items in the exact format Linear and Jira expect. Copy-paste into your tracker or use the API output directly.</p>
       </div>
       <div class="bg-[var(--surface)] rounded-2xl p-6 border border-neutral-800">
-        <div class="text-3xl mb-3">\U0001F6E1\uFE0F</div>
+        <div class="text-3xl mb-3">&#x1F6E1;&#xFE0F;</div>
         <h3 class="text-lg font-semibold mb-2">No Bot, No Subscription</h3>
         <p class="text-neutral-400 text-sm">No bot joins your calls. No per-seat pricing. One-time purchase gives your whole team permanent access.</p>
       </div>
@@ -189,9 +189,9 @@ const LANDING_PAGE_HTML = `<!DOCTYPE html>
       container.innerHTML = '';
       results.classList.remove('hidden');
       if (data.actionItems && data.actionItems.length > 0) {
-        data.actionItems.forEach(item => {
-          const priorityColors = { high: 'text-red-400 bg-red-400/10', medium: 'text-yellow-400 bg-yellow-400/10', low: 'text-blue-400 bg-blue-400/10' };
-          const el = document.createElement('div');
+        data.actionItems.forEach(function(item) {
+          var priorityColors = { high: 'text-red-400 bg-red-400/10', medium: 'text-yellow-400 bg-yellow-400/10', low: 'text-blue-400 bg-blue-400/10' };
+          var el = document.createElement('div');
           el.className = 'flex items-start gap-3 p-3 bg-neutral-900 rounded-lg border border-neutral-800';
           el.innerHTML = '<span class="px-2 py-0.5 rounded text-xs mono ' + (priorityColors[item.priority] || '') + '">' + item.priority + '</span>' +
             '<div class="flex-1"><p class="text-sm font-medium">' + item.title + '</p>' +
@@ -201,7 +201,7 @@ const LANDING_PAGE_HTML = `<!DOCTYPE html>
           container.appendChild(el);
         });
       } else {
-        container.innerHTML = '<p class="text-neutral-500 text-sm">No action items detected. Try adding lines with keywords like "will", "should", "TODO", or "action item".</p>';
+        container.innerHTML = '<p class="text-neutral-500 text-sm">No action items detected.</p>';
       }
       summary.textContent = data.summary || '';
     }
